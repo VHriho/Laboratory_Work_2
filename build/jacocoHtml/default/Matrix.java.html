@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="uk"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Matrix.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LabWork2</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Matrix.java</span></div><h1>Matrix.java</h1><pre class="source lang-java linenums">import java.util.Objects;
+import java.util.Random;
+
+public class Matrix {
+    static int m;
+    static int n;
+    static int[][] arr;
+
+    //make empty matrix
+<span class="fc" id="L10">    public Matrix() {</span>
+<span class="fc" id="L11">        m = 0;</span>
+<span class="fc" id="L12">        n = 0;</span>
+<span class="fc" id="L13">        arr = new int[m][n];</span>
+<span class="fc" id="L14">    }</span>
+
+    //self-made matrix
+<span class="fc" id="L17">    public Matrix(int row, int colum) {</span>
+<span class="fc" id="L18">        m = row;</span>
+<span class="fc" id="L19">        n = colum;</span>
+<span class="fc" id="L20">        arr = new int[row][colum];</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        for (int i = 0; i &lt; row; i++) {</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">            for (int j = 0; j &lt; colum; j++)</span>
+<span class="fc" id="L23">                arr[i][j] = 0;</span>
+        }
+<span class="fc" id="L25">    }</span>
+
+<span class="fc" id="L27">    public Matrix(Matrix mtx){</span>
+<span class="fc" id="L28">        int[][] copyMatrix = new int[m][n];</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        for (int i = 0; i &lt; m; i++){</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">            for (int j = 0; j &lt; n; j++)</span>
+<span class="fc" id="L31">                copyMatrix[i][j] = mtx.takeElem(i,j);</span>
+        }
+<span class="fc" id="L33">    }</span>
+
+    //method for random fill matrix
+    public void fillRandomElem() {
+<span class="fc" id="L37">        Random fillRandom = new Random();</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        for (int i = 0; i &lt; m; i++) {</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            for (int j = 0; j &lt; n; j++)</span>
+<span class="fc" id="L40">                arr[i][j] = fillRandom.nextInt(10);</span>
+        }
+<span class="fc" id="L42">    }</span>
+
+    //method for take element from matrix
+    public int takeElem(int row, int colum) {
+<span class="pc bpc" id="L46" title="1 of 4 branches missed.">        if (row &lt;= m &amp;&amp; colum &lt;= n)</span>
+<span class="fc" id="L47">            return arr[row][colum];</span>
+        else{
+<span class="fc" id="L49">            System.out.println(&quot;INPUT INCORRECT!: row or colum out of range&quot;);</span>
+<span class="fc" id="L50">            return 0;</span>
+        }
+    }
+
+    //take row of matrix
+    public String takeRow(int row) {
+<span class="fc" id="L56">        StringBuilder Row = new StringBuilder();</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (row &lt;= m) {</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            for (int j = 0; j &lt; n; j++) {</span>
+<span class="fc" id="L59">                Row.append(takeElem(row, j)).append(&quot; &quot;);</span>
+            }
+        }
+        else
+<span class="fc" id="L63">           System.out.println(&quot;INPUT INCORRECT!: row value out of range&quot;);</span>
+<span class="fc" id="L64">        return Row.toString();</span>
+    }
+
+    //take colum of matrix
+    public String takeColum(int colum) {
+<span class="fc" id="L69">        StringBuilder Colum = new StringBuilder();</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (colum &lt;= n) {</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            for (int i = 0; i &lt; m; i++) {</span>
+<span class="fc" id="L72">                Colum.append(takeElem(i, colum)).append(&quot; &quot;);</span>
+            }
+        } else
+<span class="fc" id="L75">            System.out.println(&quot;INPUT INCORRECT!: colum value out of range\n&quot;);</span>
+<span class="fc" id="L76">        return Colum.toString();</span>
+    }
+
+    //dimension of matrix
+    public String dimension() {
+<span class="fc" id="L81">        return (&quot;Dimension: &quot; + m + &quot;x&quot; + n);</span>
+    }
+
+    //dimension of matrix
+    public int[] dimensionLst() {
+<span class="fc" id="L86">        return new int[]{m, n};</span>
+    }
+
+    //method equals
+    public boolean equals(Object obj) {
+<span class="fc" id="L91">        boolean isEquals = false;</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        if (obj instanceof Matrix) {</span>
+<span class="fc" id="L93">            Matrix otherMatrix = (Matrix) obj;</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">            for (int i = 0; i &lt; m; i++) {</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">                for (int j = 0; j &lt; n; j++)</span>
+<span class="pc bpc" id="L96" title="2 of 4 branches missed.">                    isEquals = (arr[i] == otherMatrix.arr[i] &amp;&amp; arr[j] == otherMatrix.arr[j]);</span>
+            }
+        }
+<span class="fc" id="L99">        return isEquals;</span>
+    }
+
+    //hashcode
+    public int hashCode() {
+<span class="fc" id="L104">        int hash = Objects.hash(Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(takeElem(0, 0)), 31);</span>
+<span class="fc" id="L105">        return hash;</span>
+    }
+
+    //single matrix
+    public static String singleMatrix(int row, int colum) {
+<span class="fc" id="L110">        StringBuilder matrix = new StringBuilder();</span>
+<span class="fc" id="L111">        int [][] single = new int [row][colum];</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (row == colum) {</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">            for (int i = 0; i &lt; row; i++) {</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">                for (int j = 0; j &lt; colum; j++) {</span>
+<span class="fc bfc" id="L115" title="All 4 branches covered.">                    if (i &lt; j || i &gt; j)</span>
+<span class="fc" id="L116">                        single[i][j] = 0;</span>
+                    else
+<span class="fc" id="L118">                        single[i][j] = 1;</span>
+<span class="fc" id="L119">                    matrix.append(single[i][j]).append(&quot; &quot;);</span>
+                }
+<span class="fc" id="L121">                matrix.append(&quot;\n&quot;);</span>
+            }
+        }
+        else
+<span class="fc" id="L125">            System.out.println(&quot;INVALID MATRIX!: not square matrix&quot;);</span>
+<span class="fc" id="L126">        return matrix.toString();</span>
+    }
+
+    //transpose matrix
+    public String transposeMatrix(){
+<span class="fc" id="L131">        StringBuilder transpose = new StringBuilder();</span>
+<span class="fc" id="L132">        int row = arr.length;</span>
+<span class="fc" id="L133">        int colum = arr[0].length;</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">        for (int i = 0; i &lt; row; i++) {</span>
+<span class="fc bfc" id="L135" title="All 2 branches covered.">            for (int j = 0; j &lt; colum; j++) {</span>
+<span class="fc" id="L136">                transpose.append(arr[j][i]).append(&quot; &quot;);</span>
+            }
+<span class="fc" id="L138">            transpose.append(&quot;\n&quot;);</span>
+        }
+<span class="fc" id="L140">        return transpose.toString();</span>
+    }
+
+    //method for printing matrix
+    public int message() {
+<span class="fc bfc" id="L145" title="All 2 branches covered.">        for (int i = 0; i &lt; m; i++) {</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">            for (int j = 0; j &lt; n; j++) {</span>
+<span class="fc" id="L147">                System.out.print(arr[i][j] + &quot; &quot;);</span>
+            }
+<span class="fc" id="L149">            System.out.println();</span>
+        }
+<span class="fc" id="L151">        return 0;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

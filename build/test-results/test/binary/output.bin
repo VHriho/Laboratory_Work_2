@@ -1,0 +1,220 @@
+
+--Test of hashCode--
+
+2 5 3 3 
+
+8 2 2 8 
+
+7 7 6 6 
+
+8 5 5 8 
+HashCode: 1046622
+-----
+
+3 5 5 1 
+
+6 5 5 2 
+
+5 6 5 1 
+
+7 5 8 0 
+HashCode: 1046653
+
+%--Test of single immutable matrix--
+1 0 0 0 0 
+0 1 0 0 0 
+0 0 1 0 0 
+0 0 0 1 0 
+0 0 0 0 1 
+
+$INVALID MATRIX!: not square matrix
+
+--Test of transpose--
+
+8 6 9 3 
+
+4 0 2 4 
+
+9 6 3 3 
+
+6 8 1 8 
+Transpose: 
+	8 4 9 6 
+	6 0 6 8 
+	9 2 3 1 
+	3 4 3 8 
+
+
+$--Test of empty immutable matrix--
+
+,--Test of self-made immutable matrix 4x4--
+
+0 0 0 0 
+
+0 0 0 0 
+
+0 0 0 0 
+
+0 0 0 0 
+
+#--Test of copy immutable matrix--
+
+8 4 7 9 
+
+5 1 3 1 
+
+7 7 6 2 
+
+3 0 2 3 
+	-------
+
+8 4 7 9 
+
+5 1 3 1 
+
+7 7 6 2 
+
+3 0 2 3 
+
+,--Test of fill value in immutable matrix--
+
+1 5 4 8 
+
+5 7 6 1 
+
+2 3 3 4 
+
+4 9 9 8 
+	
+	.--Test of take element in immutable matrix--
+	
+0 7 3 9 
+	
+2 8 3 5 
+	
+5 2 3 8 
+	
+5 5 4 4 
+	First element: 0
+	-INPUT INCORRECT!: row or colum out of range
+
+
+
+--Test of take row--
+
+5 6 3 
+
+9 2 8 
+
+5 0 3 
+
+First row: 5 6 3 
+
+Second row: 9 2 8 
+
+Third row: 5 0 3 
+
+*INPUT INCORRECT!: row value out of range
+
+--Test of take colum--
+8 1 1 
+3 7 8 
+2 3 2 
+First row: 8 3 2 
+Second row: 1 7 3 
+Third row: 1 8 2 
++INPUT INCORRECT!: colum value out of range
+
+--Test of dimension--
+DimensionImmut: 4x4
+
+--Test of equals--
+false
+false
+true
+
+--Test of hashCode--
+5 1 7 
+2 7 8 
+5 0 0 
+HashCode: 1015963
+-----
+4 1 0 
+6 5 2 
+7 9 1 
+HashCode: 1015932
+
+--Test of single matrix--
+1 0 0 
+0 1 0 
+0 0 1 
+
+$INVALID MATRIX!: not square matrix
+
+--Test of transpose--
+9 0 5 
+8 4 3 
+8 4 6 
+Transpose: 
+9 8 8 
+0 4 4 
+5 3 6 
+
+
+--Test of empty matrix--
+
+"--Test of self-made matrix 3x3--
+0 0 0 
+0 0 0 
+0 0 0 
+
+--Test of copy matrix--
+8 7 7 
+2 1 5 
+6 3 5 
+-----
+8 7 7 
+2 1 5 
+6 3 5 
+
+"--Test of fill value in matrix--
+7 3 2 
+0 6 2 
+9 8 1 
+
+$--Test of take element in matrix--
+8 0 4 
+2 9 7 
+4 3 8 
+First element: 8
+-INPUT INCORRECT!: row or colum out of range
+
+--Test of take row--
+4 6 0 
+3 5 3 
+7 8 2 
+First row: 4 6 0 
+Second row: 3 5 3 
+Third row: 7 8 2 
+*INPUT INCORRECT!: row value out of range
+
+--Test of take colum--
+8 8 6 
+7 6 5 
+1 3 4 
+First colum: 8 7 1 
+Second colum: 8 6 3 
+Third colum: 6 5 4 
++INPUT INCORRECT!: colum value out of range
+
+--Test of dimension--
+
+--Test of equals--
+0 4 3 
+5 4 2 
+9 8 7 
+-----
+0 4 3 
+5 4 2 
+9 8 7 
+Is equal: true

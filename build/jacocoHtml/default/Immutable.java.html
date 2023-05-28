@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="uk"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Immutable.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LabWork2</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Immutable.java</span></div><h1>Immutable.java</h1><pre class="source lang-java linenums">import java.util.Objects;
+import java.util.Random;
+
+public  final class Immutable{
+    private static Matrix fmtx;
+
+    //make immutable matrix
+<span class="fc" id="L8">    public Immutable (Matrix mtx){</span>
+<span class="fc" id="L9">        this.fmtx = new Matrix(mtx);</span>
+<span class="fc" id="L10">    }</span>
+
+    //make immutable copy of immutable matrix
+<span class="fc" id="L13">    public Immutable(Immutable mtx){</span>
+<span class="fc" id="L14">        int[][] copyMatrix = new int[mtx.dimensionLstImmut()[0]][mtx.dimensionLstImmut()[1]];</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        for (int i = 0; i &lt; mtx.dimensionLstImmut()[0]; i++){</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">            for (int j = 0; j &lt; mtx.dimensionLstImmut()[1]; j++)</span>
+<span class="fc" id="L17">                copyMatrix[i][j] = mtx.takeElemImmut(i,j);</span>
+        }
+<span class="fc" id="L19">    }</span>
+
+    //fill random value into immutable matrix
+    public static void fillRandomImmut() {
+<span class="fc" id="L23">        Random fill = new Random();</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        for (int i = 0; i &lt; Matrix.m; i++) {</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">            for (int j = 0; j &lt; Matrix.n; j++)</span>
+<span class="fc" id="L26">                Matrix.arr[i][j] = fill.nextInt(10);</span>
+        }
+<span class="fc" id="L28">    }</span>
+
+    //take element from immutable matrix
+    public int takeElemImmut(int row, int colum){
+<span class="fc" id="L32">        return (this.fmtx.takeElem(row, colum));</span>
+    }
+
+    //take row from immutable matrix
+    public String takeRowImmut(int row) {
+<span class="fc" id="L37">        StringBuilder Row = new StringBuilder();</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (row &lt;= fmtx.m) {</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            for (int j = 0; j &lt; fmtx.n; j++) {</span>
+<span class="fc" id="L40">                Row.append(takeElemImmut(row, j)).append(&quot; &quot;);</span>
+            }
+        }
+        else
+<span class="fc" id="L44">            System.out.println(&quot;INPUT INCORRECT!: row value out of range&quot;);</span>
+<span class="fc" id="L45">        return Row.toString();</span>
+    }
+
+    //take colum from immutable matrix
+    public String takeColumImmut(int colum) {
+<span class="fc" id="L50">        StringBuilder Colum = new StringBuilder();</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (colum &lt;= fmtx.n) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            for (int i = 0; i &lt; fmtx.m; i++) {</span>
+<span class="fc" id="L53">                Colum.append(takeElemImmut(i, colum)).append(&quot; &quot;);</span>
+            }
+        } else
+<span class="fc" id="L56">            System.out.println(&quot;INPUT INCORRECT!: colum value out of range\n&quot;);</span>
+<span class="fc" id="L57">        return Colum.toString();</span>
+    }
+
+    //dimension of immutable matrix
+    public int[] dimensionLstImmut(){
+<span class="fc" id="L62">        return new int []{this.fmtx.dimensionLst()[0], this.fmtx.dimensionLst()[1]};</span>
+    }
+
+    //equals method of immutable matrix
+    public boolean equals(Object obj) {
+<span class="fc" id="L67">        boolean isEqual = false;</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (obj instanceof Immutable) {</span>
+<span class="fc" id="L69">            Immutable otherMatrix = (Immutable) obj;</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            for (int i = 0; i &lt; fmtx.m; i++) {</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">                for (int j = 0; j &lt; fmtx.n; j++)</span>
+<span class="pc bpc" id="L72" title="2 of 4 branches missed.">                    isEqual = (fmtx.arr[i] == otherMatrix.fmtx.arr[i] &amp;&amp; fmtx.arr[j] == otherMatrix.fmtx.arr[j]);</span>
+            }
+        }
+<span class="fc" id="L75">        return isEqual;</span>
+    }
+
+    //hashCode method of immutable matrix
+    public int hashCode() {
+<span class="fc" id="L80">        int hash = Objects.hash(Integer.valueOf(fmtx.m), Integer.valueOf(fmtx.n), Integer.valueOf(takeElemImmut(0, 0)), 31);</span>
+<span class="fc" id="L81">        return hash;</span>
+    }
+
+    //make immutable single matrix
+    public static String singleMatrixImmut(int row, int colum) {
+<span class="fc" id="L86">        StringBuilder matrix = new StringBuilder();</span>
+<span class="fc" id="L87">        int [][] single = new int [row][colum];</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (row == colum) {</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            for (int i = 0; i &lt; row; i++) {</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">                for (int j = 0; j &lt; colum; j++) {</span>
+<span class="fc bfc" id="L91" title="All 4 branches covered.">                    if (i &lt; j || i &gt; j)</span>
+<span class="fc" id="L92">                        single[i][j] = 0;</span>
+                    else
+<span class="fc" id="L94">                        single[i][j] = 1;</span>
+<span class="fc" id="L95">                    matrix.append(single[i][j]).append(&quot; &quot;);</span>
+                }
+<span class="fc" id="L97">                matrix.append(&quot;\n&quot;);</span>
+            }
+        }
+        else
+<span class="fc" id="L101">            System.out.println(&quot;INVALID MATRIX!: not square matrix&quot;);</span>
+<span class="fc" id="L102">        return matrix.toString();</span>
+    }
+
+    //transpose immutable matrix
+    public String transposeMatrix(){
+<span class="fc" id="L107">        StringBuilder transpose = new StringBuilder();</span>
+<span class="fc" id="L108">        int row = fmtx.arr.length;</span>
+<span class="fc" id="L109">        int colum = fmtx.arr[0].length;</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        for (int i = 0; i &lt; row; i++) {</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">            for (int j = 0; j &lt; colum; j++) {</span>
+<span class="fc" id="L112">                transpose.append(fmtx.arr[j][i]).append(&quot; &quot;);</span>
+            }
+<span class="fc" id="L114">            transpose.append(&quot;\n&quot;);</span>
+        }
+<span class="fc" id="L116">        return transpose.toString();</span>
+    }
+
+    //display method for immutable matrix
+    public int messageImmut() {
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        for (int i = 0; i &lt; Matrix.m; i++) {</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">            for (int j = 0; j &lt; Matrix.n; j++) {</span>
+<span class="fc" id="L123">                System.out.print(Matrix.arr[i][j] + &quot; &quot;);</span>
+            }
+<span class="fc" id="L125">            System.out.println();</span>
+        }
+<span class="fc" id="L127">        return 0;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
