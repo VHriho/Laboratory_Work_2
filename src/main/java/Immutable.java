@@ -9,21 +9,21 @@ public  final class Immutable{
         this.fmtx = new Matrix(mtx);
     }
 
+    public Immutable (int row, int colum) {
+        try {
+            throw new UnsupportedOperationException("Immutable matrix unsupport changes! ");
+        }
+        catch (java.lang.UnsupportedOperationException e) {
+            System.out.println("Invalid operation for immutable matrix! ");
+        }
+    }
+
     //make immutable copy of immutable matrix
     public Immutable(Immutable mtx){
         int[][] copyMatrix = new int[mtx.dimensionLstImmut()[0]][mtx.dimensionLstImmut()[1]];
         for (int i = 0; i < mtx.dimensionLstImmut()[0]; i++){
             for (int j = 0; j < mtx.dimensionLstImmut()[1]; j++)
                 copyMatrix[i][j] = mtx.takeElemImmut(i,j);
-        }
-    }
-
-    //fill random value into immutable matrix
-    public static void fillRandomImmut() {
-        Random fill = new Random();
-        for (int i = 0; i < Matrix.m; i++) {
-            for (int j = 0; j < Matrix.n; j++)
-                Matrix.arr[i][j] = fill.nextInt(10);
         }
     }
 

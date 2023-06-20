@@ -31,20 +31,19 @@ class ImmutableTest {
         System.out.println("-------");
         Immutable immutCopyOfTestMatrix = new Immutable(immutTestMatrix);
         immutCopyOfTestMatrix.messageImmut();
+        System.out.println("First matrix: " +  immutTestMatrix.getClass());
+        System.out.println("Second matrix: " + immutCopyOfTestMatrix.getClass());
     }
 
     @Test
     public void test_4(){
         System.out.println("\n--Test of fill value in immutable matrix--");
-        Matrix matrixForTest = new Matrix(4,4);
-        matrixForTest.fillRandomElem();
-        Immutable immutTestMatrix = new Immutable(matrixForTest);
-        immutTestMatrix.messageImmut();
+        Immutable testImmutMatrix = new Immutable(4,4);
     }
 
     @Test
     public void test_5(){
-        System.out.println("\n--Test of take element in immutable matrix--");
+        System.out.println("\n--Test of take element of immutable matrix--");
         Matrix matrixForTest = new Matrix(4,4);
         matrixForTest.fillRandomElem();
         Immutable immutTestMatrix = new Immutable(matrixForTest);
@@ -57,8 +56,8 @@ class ImmutableTest {
     public void test_6(){
         System.out.println("\n--Test of take row--");
         Matrix matrixForTest = new Matrix(3,3);
+        matrixForTest.fillRandomElem();
         Immutable immutTestMatrix = new Immutable(matrixForTest);
-        immutTestMatrix.fillRandomImmut();
         immutTestMatrix.messageImmut();
         System.out.println("First row: "+  immutTestMatrix.takeRowImmut(0));
         System.out.println("Second row: "+  immutTestMatrix.takeRowImmut(1));
@@ -70,8 +69,8 @@ class ImmutableTest {
     public void test_7(){
         System.out.println("\n--Test of take colum--");
         Matrix matrixForTest = new Matrix(3,3);
+        matrixForTest.fillRandomElem();
         Immutable immutTestMatrix = new Immutable(matrixForTest);
-        immutTestMatrix.fillRandomImmut();
         immutTestMatrix.messageImmut();
         System.out.println("First row: "+  immutTestMatrix.takeColumImmut(0));
         System.out.println("Second row: "+  immutTestMatrix.takeColumImmut(1));
@@ -106,11 +105,6 @@ class ImmutableTest {
         Immutable immutTestMatrix = new Immutable(matrixForTest);
         immutTestMatrix.messageImmut();
         System.out.println("HashCode: " + immutTestMatrix.hashCode());
-        System.out.println("-----");
-        Immutable copyImmutTestMatrix = new Immutable(immutTestMatrix);
-        copyImmutTestMatrix.fillRandomImmut();
-        copyImmutTestMatrix.messageImmut();
-        System.out.println("HashCode: " + copyImmutTestMatrix.hashCode());
     }
 
     @Test

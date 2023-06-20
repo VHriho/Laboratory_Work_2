@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ImmutableTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2023-05-28T12:16:58" hostname="DESKTOP-07HMHSA" time="0.057">
+<testsuite name="ImmutableTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2023-06-20T23:42:29" hostname="DESKTOP-07HMHSA" time="0.067">
   <properties/>
-  <testcase name="test_10()" classname="ImmutableTest" time="0.03"/>
-  <testcase name="test_11()" classname="ImmutableTest" time="0.008"/>
+  <testcase name="test_10()" classname="ImmutableTest" time="0.032"/>
+  <testcase name="test_11()" classname="ImmutableTest" time="0.01"/>
   <testcase name="test_12()" classname="ImmutableTest" time="0.001"/>
-  <testcase name="test_1()" classname="ImmutableTest" time="0.0"/>
+  <testcase name="test_1()" classname="ImmutableTest" time="0.001"/>
   <testcase name="test_2()" classname="ImmutableTest" time="0.001"/>
-  <testcase name="test_3()" classname="ImmutableTest" time="0.001"/>
+  <testcase name="test_3()" classname="ImmutableTest" time="0.009"/>
   <testcase name="test_4()" classname="ImmutableTest" time="0.001"/>
-  <testcase name="test_5()" classname="ImmutableTest" time="0.0"/>
-  <testcase name="test_6()" classname="ImmutableTest" time="0.001"/>
-  <testcase name="test_7()" classname="ImmutableTest" time="0.002"/>
-  <testcase name="test_8()" classname="ImmutableTest" time="0.002"/>
-  <testcase name="test_9()" classname="ImmutableTest" time="0.001"/>
+  <testcase name="test_5()" classname="ImmutableTest" time="0.001"/>
+  <testcase name="test_6()" classname="ImmutableTest" time="0.0"/>
+  <testcase name="test_7()" classname="ImmutableTest" time="0.001"/>
+  <testcase name="test_8()" classname="ImmutableTest" time="0.001"/>
+  <testcase name="test_9()" classname="ImmutableTest" time="0.002"/>
   <system-out><![CDATA[
 --Test of hashCode--
-2 5 3 3 
-8 2 2 8 
-7 7 6 6 
-8 5 5 8 
-HashCode: 1046622
------
-3 5 5 1 
-6 5 5 2 
-5 6 5 1 
-7 5 8 0 
-HashCode: 1046653
+6 1 2 3 
+4 7 9 1 
+3 6 2 6 
+4 5 4 7 
+HashCode: 1046746
 
 --Test of single immutable matrix--
 1 0 0 0 0 
@@ -37,15 +31,15 @@ HashCode: 1046653
 INVALID MATRIX!: not square matrix
 
 --Test of transpose--
-8 6 9 3 
-4 0 2 4 
-9 6 3 3 
-6 8 1 8 
+7 4 8 5 
+4 9 0 8 
+2 9 2 7 
+6 7 9 4 
 Transpose: 
-8 4 9 6 
-6 0 6 8 
-9 2 3 1 
-3 4 3 8 
+7 4 2 6 
+4 9 9 7 
+8 0 2 9 
+5 8 7 4 
 
 
 --Test of empty immutable matrix--
@@ -57,46 +51,45 @@ Transpose:
 0 0 0 0 
 
 --Test of copy immutable matrix--
-8 4 7 9 
-5 1 3 1 
-7 7 6 2 
-3 0 2 3 
+5 8 7 2 
+3 3 0 0 
+0 7 3 0 
+6 8 5 6 
 -------
-8 4 7 9 
-5 1 3 1 
-7 7 6 2 
-3 0 2 3 
+5 8 7 2 
+3 3 0 0 
+0 7 3 0 
+6 8 5 6 
+First matrix: class Immutable
+Second matrix: class Immutable
 
 --Test of fill value in immutable matrix--
-1 5 4 8 
-5 7 6 1 
-2 3 3 4 
-4 9 9 8 
+Invalid operation for immutable matrix! 
 
---Test of take element in immutable matrix--
-0 7 3 9 
-2 8 3 5 
-5 2 3 8 
-5 5 4 4 
-First element: 0
+--Test of take element of immutable matrix--
+9 2 6 1 
+4 8 0 4 
+3 3 5 4 
+8 0 7 0 
+First element: 9
 INPUT INCORRECT!: row or colum out of range
 
 --Test of take row--
-5 6 3 
-9 2 8 
-5 0 3 
-First row: 5 6 3 
-Second row: 9 2 8 
-Third row: 5 0 3 
+4 8 4 
+8 1 9 
+9 2 7 
+First row: 4 8 4 
+Second row: 8 1 9 
+Third row: 9 2 7 
 INPUT INCORRECT!: row value out of range
 
 --Test of take colum--
-8 1 1 
-3 7 8 
-2 3 2 
-First row: 8 3 2 
-Second row: 1 7 3 
-Third row: 1 8 2 
+7 2 8 
+1 6 3 
+4 1 0 
+First row: 7 1 4 
+Second row: 2 6 1 
+Third row: 8 3 0 
 INPUT INCORRECT!: colum value out of range
 
 --Test of dimension--
